@@ -30,7 +30,7 @@
     "@angular/compiler": "^4.1.0",
     "@angular/core": "^4.1.0",
     "@angular/forms": "^4.1.0",
-    "@angular/http": "^4.1.0",
+    "@angular/http": "^4.2.3",
     "@angular/material": "^2.0.0-beta.4",
     "@angular/platform-browser": "^4.1.0",
     "@angular/platform-browser-dynamic": "^4.1.0",
