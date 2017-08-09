@@ -10,20 +10,10 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
  */
 @Component({
     // The selector is what angular internally uses
-    selector: 'ae-app', // <app></app>
+    selector: 'app-container', // <app></app>
     styleUrls: ['./app.theme.scss'],
     encapsulation: ViewEncapsulation.None,
-    template: `
-    <div [class.m2app-dark]="isDarkTheme">
-        <main>
-            <router-outlet></router-outlet>
-            <br/>
-            <md-slide-toggle (change)="isDarkTheme = !isDarkTheme" [checked]="isDarkTheme" color="primary">
-                Set Dark theme
-            </md-slide-toggle>
-        </main>
-    </div>
-    `
+    templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
     //component initialization

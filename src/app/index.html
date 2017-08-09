@@ -31,14 +31,20 @@
     <meta name="msapplication-TileImage" content="/assets/icon/ms-icon-144x144.png">
     <meta name="theme-color" content="#00bcd4">
     <!-- end favicon -->
-
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+    </style>
 </head>
 
-<body>
+<body class="mat-app-background">
 
-    <ae-app>
+    <app-container>
         Loading...
-    </ae-app>
+    </app-container>
 
     <script src="dist/polyfills.js"></script>
     <script src="dist/vendor.js"></script>
