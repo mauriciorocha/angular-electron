@@ -1,27 +1,67 @@
-<!--<footer class="md-scroll-shrink">
-    <md-toolbar class="md-medium-tall">
-        <div layout="row" layout-align="center center" flex>
-            <span>FOOTER</span>
-        </div>
-    </md-toolbar>
-</footer>-->
-
-
-<div class="container" fxLayout="column">
-    <header>
-        <md-toolbar>
-            <div>
-                <img src="../assets/logo-brscan.png" />
+<header>
+    <div class="navbar-fixed">
+        <nav role="navigation">
+            <div class="nav-wrapper container">
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+                <a id="logo-container" [routerLink]="['/']" class="brand-logo center"><img class="responsive-img logo" src="../assets/logo-brscan.png" /></a>
+                <ul class="left hide-on-med-and-down">
+                    <li [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active"><a [routerLink]="['/']">Home</a></li>
+                </ul>
+                <ul class="right hide-on-med-and-down">
+                    <li routerLinkActive="active" [hidden]="profileService.user.id"><a [routerLink]="['/login']">Login</a></li>
+                    <li routerLinkActive="active" [hidden]="profileService.user.id"><a [routerLink]="['/register']">Register</a></li>
+                    <li role="close"><a (click)="close()">Fechar</a></li>
+                </ul>
             </div>
-            <div class="">
-                <!--<img src="../assets/supervisor.gif" />-->
-            </div>
-        </md-toolbar>
-    </header>
-    <div fxFlex="1">
+        </nav>
+    </div>
+
+    <!--MOBILE-->
+    <ul id="nav-mobile" class="side-nav">
+        <li [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active"><a [routerLink]="['/']">Home</a></li>
+
+        <li class="divider" [hidden]="!profileService.user.id"></li>
+        <li [hidden]="!profileService.user.id" routerLinkActive="active">
+            <a [routerLink]="['/profile']" style="height: 88px; padding: 15px 32px;">
+                {{profileService.user.name}}
+            </a>
+        </li>
+
+        <li class="divider"></li>
+        <li [hidden]="!profileService.user.id" routerLinkActive="active"><a [routerLink]="['/bonsai']">Bonsai</a></li>
+
+        <li class="divider" [hidden]="!profileService.user.id"></li>
+        <li routerLinkActive="active" [hidden]="profileService.user.id"><a [routerLink]="['/login']">Login</a></li>
+        <li routerLinkActive="active" [hidden]="profileService.user.id"><a [routerLink]="['/register']">Register</a></li>
+        <li role="close"><a (click)="close()">Fechar</a></li>
+    </ul>
+</header>
+<main>
+    <div class="container" id="main">
         <router-outlet></router-outlet>
     </div>
-    <footer>
-        This is the footer
-    </footer>
-</div>
+</main>
+<footer class="page-footer white-text">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5>BrScan Supervisor</h5>
+                <p class="">Acompanhe a execução de scripts em tempo real.</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5>Links</h5>
+                <ul>
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright white-text">
+        <div class="container">
+            © 2014 Copyright <a href="http://www.brscan.com.br">BrScan</a>
+        </div>
+    </div>
+</footer>

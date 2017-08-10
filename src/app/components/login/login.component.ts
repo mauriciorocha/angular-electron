@@ -23,6 +23,7 @@ import { Authentication } from '../../services/authentication';
 export class LoginComponent {
     unsubscribe: any;
     authenticated: boolean;
+    title: string =  'Titulo 123';
 
     //Inject Authentication service on construction
     constructor(private _router: Router, private _ngZone: NgZone, private auth: Authentication, public store: Store<AppState>) {
