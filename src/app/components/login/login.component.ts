@@ -15,6 +15,9 @@ import { AppState } from '../../store/appState.store';
  */
 import { Authentication } from '../../services/authentication';
 
+var supervisord = require('supervisord');
+const options = require('./../../config.json');
+
 @Component({
     selector: 'ae-login',
     templateUrl: './login.component.html',
@@ -23,11 +26,24 @@ import { Authentication } from '../../services/authentication';
 export class LoginComponent {
     unsubscribe: any;
     authenticated: boolean;
+    clientSupervisord: any;
     title: string =  'Titulo 123';
 
     //Inject Authentication service on construction
     constructor(private _router: Router, private _ngZone: NgZone, private auth: Authentication, public store: Store<AppState>) {
         this.auth = auth;
+
+        console.log(options.supervisor.hosts);
+
+        for (let host of options.supervisor.hosts) {
+            this.clientSupervisord = supervisord.connect(`http://${host.user}:${host.password}@${host.host}:${host.port}`);
+
+            this.clientSupervisord.getAllProcessInfo(function(err, result) {
+                //Here we may get cookie received from server if we know its name
+                console.log(result);
+            });
+        }
+
 
         this.checkAuth();
 
@@ -59,5 +75,9 @@ export class LoginComponent {
 
     authenticate() {
         this.auth.githubHandShake();
+    }
+
+    xmlRpc() {
+
     }
 }
