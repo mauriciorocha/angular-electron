@@ -16,3 +16,5 @@ import 'rxjs/add/operator/mergeMap';
 
 // Hammer
 import 'hammerjs';
+import $ from 'jquery';
+

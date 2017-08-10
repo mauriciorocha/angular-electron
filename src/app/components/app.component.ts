@@ -1,8 +1,8 @@
-import { AppState } from './../store/appState.store';
+import {AppState} from './../store/appState.store';
 /**
  * Import decorators and services from angular
  */
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, AfterViewInit, ViewEncapsulation} from '@angular/core';
 
 /*
  * App Component
@@ -15,13 +15,40 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
     encapsulation: ViewEncapsulation.None,
     templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements AfterViewInit {
     //component initialization
     isDarkTheme: boolean = false;
-
-    ngOnInit() {
+    public profileService: any;
+    
+    constructor() {
+        this.profileService = {
+            user: {}
+        };
+    }
+    
+    ngAfterViewInit() {
+        const mat = require('materialize-css')
+        console.log('ngOnInit');
+        console.log($);
+        // $(document).ready(function () {
+        console.log('ready');
+        (<any>$('.button-collapse')).sideNav();
+        (<any>$('.dropdown-button')).dropdown({
+            hover: true,
+            gutter: 0,
+            belowOrigin: true
+        });
+        // });
         //check authentication
     }
-
-    checkAuthentication() { }
+    
+    checkAuthentication() {
+    }
+    
+    close() {
+        const electron = require('electron');
+        const app = electron.remote.app;
+        console.log(electron);
+        app.quit();
+    }
 }

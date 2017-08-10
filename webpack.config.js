@@ -9,6 +9,7 @@ const path = require('path');
 
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 
 /*
  * Config
@@ -131,6 +132,11 @@ var config = {
                 },
             }
         }),
+
+        new ProvidePlugin({
+            "window.jQuery": "jquery",
+            Hammer: "hammerjs/hammer"
+        })
     ],
     // we need this due to problems with es6-shim
     node: {
