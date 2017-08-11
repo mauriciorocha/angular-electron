@@ -27,8 +27,9 @@ import {HomeComponent} from './components/home/home.component';
 import {AppComponent} from './components/app.component';
 
 /**
- * Import material UI Components
+ * Import PIPES
  */
+import {NgPipesModule} from 'ngx-pipes';
 
 import {routes} from './app.routes';
 
@@ -54,6 +55,7 @@ import {MaterializeModule} from "angular2-materialize";
         MaterializeModule,
         RouterModule.forRoot(routes, {useHash: true}),
         StoreModule.provideStore({authStore}, {authStore: authInitialState}),
+        NgPipesModule
     ],
     providers: [Authentication],
     declarations: [TabsComponent, SupervisorComponent, JobsComponent, RelatoriosComponent, AppComponent, HomeComponent, LoginComponent],
