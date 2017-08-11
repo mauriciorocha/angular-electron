@@ -8,7 +8,14 @@
                 <span class="badge red white-text"><strong>{{host.pidInativos}}</strong> Processos Inativos </span>
             </div>
             <div class="collapsible-body">
-                <p>Lorem ipsum dolor sit amet.</p>
+                <pre><p>{{host.result | json}}</p></pre>
+
+                <!--{{host | json}}-->
+                <div *ngFor="let item of host.result; let i = index;" >
+
+                        {{item}} : {{i}}
+                </div>
+               
             </div>
         </li>
     </ul>
