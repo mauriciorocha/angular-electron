@@ -18,6 +18,10 @@ import {authStore, authInitialState} from './store/auth.store';
 /**
  * Import our child components
  */
+import { TabsComponent } from './components/tabs/tabs.component';
+import { JobsComponent } from './components/jobs/jobs.component';
+import { SupervisorComponent } from './components/supervisor/supervisor.component';
+import { RelatoriosComponent } from './components/relatorios/relatorios.component';
 import {LoginComponent} from './components/login/login.component';
 import {HomeComponent} from './components/home/home.component';
 import {AppComponent} from './components/app.component';
@@ -25,7 +29,6 @@ import {AppComponent} from './components/app.component';
 /**
  * Import material UI Components
  */
-// import { MdToolbarModule, MdCardModule, MdButtonModule, MdSlideToggleModule } from '@angular/material';
 
 import {routes} from './app.routes';
 
@@ -48,16 +51,12 @@ import {MaterializeModule} from "angular2-materialize";
         ReactiveFormsModule,
         HttpModule,
         BrowserAnimationsModule,
-        // MdToolbarModule,
-        // MdCardModule,
-        // MdButtonModule,
-        // MdSlideToggleModule,
         MaterializeModule,
         RouterModule.forRoot(routes, {useHash: true}),
         StoreModule.provideStore({authStore}, {authStore: authInitialState}),
     ],
     providers: [Authentication],
-    declarations: [AppComponent, HomeComponent, LoginComponent],
+    declarations: [TabsComponent, SupervisorComponent, JobsComponent, RelatoriosComponent, AppComponent, HomeComponent, LoginComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {

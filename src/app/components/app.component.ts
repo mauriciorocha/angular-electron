@@ -28,9 +28,9 @@ export class AppComponent implements AfterViewInit {
     
     ngAfterViewInit() {
         const mat = require('materialize-css')
-        console.log('ngOnInit');
-        console.log($);
-        // $(document).ready(function () {
+        
+        
+
         console.log('ready');
         (<any>$('.button-collapse')).sideNav();
         (<any>$('.dropdown-button')).dropdown({
@@ -38,8 +38,7 @@ export class AppComponent implements AfterViewInit {
             gutter: 0,
             belowOrigin: true
         });
-        // });
-        //check authentication
+
     }
     
     checkAuthentication() {

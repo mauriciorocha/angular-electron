@@ -4,6 +4,8 @@
 import { Component, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 
+import {MaterializeDirective} from "angular2-materialize";
+
 /**
  * Import the ngrx configured store
  */
@@ -14,6 +16,8 @@ import { AppState } from '../../store/appState.store';
  * Import the authentication service to be injected into our component
  */
 import { Authentication } from '../../services/authentication';
+
+import { TabsComponent } from '../tabs/tabs.component';
 
 var supervisord = require('supervisord');
 const options = require('./../../config.json');
@@ -33,24 +37,11 @@ export class LoginComponent {
     constructor(private _router: Router, private _ngZone: NgZone, private auth: Authentication, public store: Store<AppState>) {
         this.auth = auth;
 
-        console.log(options.supervisor.hosts);
-
-        for (let host of options.supervisor.hosts) {
-            this.clientSupervisord = supervisord.connect(`http://${host.user}:${host.password}@${host.host}:${host.port}`);
-
-            this.clientSupervisord.getAllProcessInfo(function(err, result) {
-                //Here we may get cookie received from server if we know its name
-                console.log(result);
-            });
-        }
-
-
         this.checkAuth();
 
         this.store.map((fullStore: any) => {
             return fullStore.authStore;
         }).subscribe((state: any) => {
-            console.log(state);
             this.authenticated = state.authenticated;
             //Because the BrowserWindow runs outside angular for some reason we need to call Zone.run()
             this._ngZone.run(() => {

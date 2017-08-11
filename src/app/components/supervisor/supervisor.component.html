@@ -1,0 +1,16 @@
+<div class="col s12" style="margin-top: 10px;">
+
+    <ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
+        <li *ngFor="let host of infoServers">
+            <div class="collapsible-header">
+                <i class="material-icons">personal_video</i><span>{{host.nameHost}}</span>
+                <span class="badge green white-text"><strong>{{host.pidAtivos}}</strong> Processos Ativos </span>
+                <span class="badge red white-text"><strong>{{host.pidInativos}}</strong> Processos Inativos </span>
+            </div>
+            <div class="collapsible-body">
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+        </li>
+    </ul>
+    <br/><br/>
+</div>
