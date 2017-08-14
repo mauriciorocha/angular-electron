@@ -6,6 +6,7 @@ import { MaterializeDirective, MaterializeAction } from "angular2-materialize";
 
 import {GroupByPipe} from 'ngx-pipes/src/app/pipes/array/group-by';
 
+import * as moment from 'moment/moment';
 
 import * as supervisord from 'supervisord';
 
@@ -44,16 +45,10 @@ export class SupervisorComponent {
         let grouped = that._groupByPipe.transform(result, 'group');
         console.log(grouped);
         let arrRetorno = [];
-        let arr = [];
         Object.keys(grouped).forEach( chave => {
-
-            
-            arr.push(result.filter(obj => obj.group === chave));
-            // let arr = [];
-            // arrRetorno[chave] = grouped[chave];
-            //arrRetorno.push(arr);
+            arrRetorno.push(result.filter(obj => obj.group === chave));
         });
-        console.log(arr);
+        console.log(arrRetorno);
           //Here we may get cookie received from server if we know its name
         that.infoServers.push(
           {
@@ -68,5 +63,9 @@ export class SupervisorComponent {
 console.log(this.infoServers);
       
     }
+  }
+
+  transformTimestampToDate(timestamp){
+    return moment.unix(timestamp).format('DD/MM/YYYY');
   }
 }

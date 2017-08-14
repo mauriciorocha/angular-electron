@@ -6,16 +6,73 @@
                 <i class="material-icons">personal_video</i><span>{{host.nameHost}}</span>
                 <span class="badge green white-text"><strong>{{host.pidAtivos}}</strong> Processos Ativos </span>
                 <span class="badge red white-text"><strong>{{host.pidInativos}}</strong> Processos Inativos </span>
+                <div class="fixed-action-btn horizontal click-to-toggle">
+                    <a class="btn-floating btn-large red" *ngIf="host.pidAtivos < host.pidAtivos + host.pidInativos" >
+                        <i class="fa fa-play" aria-hidden="true"></i>
+                    </a>
+                    <a class="btn-floating btn-large red" *ngIf="host.pidAtivos > 0">
+                        <i class="fa fa-stop-circle" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
             <div class="collapsible-body">
-                <pre><p>{{host.result | json}}</p></pre>
+                <!--<pre><p>{{host.result | json}}</p></pre>-->
 
                 <!--{{host | json}}-->
-                <div *ngFor="let item of host.result; let i = index;" >
+                <div *ngFor="let group of host.result">
+                    <div class="card blue-grey darken-1">
+                        <ul class="collection with-header">
+                            <li class="collection-header red darken-3 white-text">
+                                <h4>{{group[0].group}}</h4>
+                            </li>
+                            <li *ngFor="let item of group" class="collection-item">
+                                <table class="bordered">
+                                      <tbody>
+                                        <tr>
+                                            <td><b>Status</b></td>
+                                            <td><b>{{item.statename}}</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>{{item.name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Description</td>
+                                            <td>{{item.description}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Exitstatus</td>
+                                            <td>{{item.exitstatus}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Start</td>
+                                            <td>{{transformTimestampToDate(item.start)}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Stop</td>
+                                            <td>{{transformTimestampToDate(item.stop)}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Log Error</td>
+                                            <td>{{item.stderr_logfile}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Logfile</td>
+                                            <td>{{item.logfile}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Stdout Logfile</td>
+                                            <td>{{item.stdout_logfile}}</td>
+                                        </tr>
 
-                        {{item}} : {{i}}
+                                    </tbody>
+                                </table>
+
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-               
+
             </div>
         </li>
     </ul>
