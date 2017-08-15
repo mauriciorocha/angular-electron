@@ -35,7 +35,8 @@
 
 // @import '~materialize-css/sass/materialize';
 
-$roboto-font-path: "../../node_modules/materialize-css/dist/fonts/roboto/";
+$fa-font-path: "dist/fonts/font-awesome";
+@import '../../../node_modules/font-awesome/scss/font-awesome';
 @import '../../../node_modules/materialize-css/sass/components/_color';
 $color-theme: 'red';
 $font-color: 'white';
@@ -72,6 +73,7 @@ main {
   padding-top: 15px;
 }
 
+$roboto-font-path: "dist/fonts/roboto/";
 @import '../../../node_modules/materialize-css/sass/materialize';
 
 a {

@@ -85,7 +85,7 @@ var config = {
             // support for fonts
             {
                 test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
-                loader: 'file-loader?name=dist/[name]-[hash].[ext]'
+                loader: 'file-loader?name=dist/fonts/[name]-[hash].[ext]'
             },
 
             // support for svg icons
@@ -111,6 +111,8 @@ var config = {
         //
         // See: https://www.npmjs.com/package/copy-webpack-plugin
         new CopyWebpackPlugin([{ from: 'src/assets', to: 'assets' }]),
+        new CopyWebpackPlugin([{ from: 'node_modules/font-awesome/fonts', to: 'fonts/font-awesome' }]),
+        new CopyWebpackPlugin([{ from: 'node_modules/materialize-css/dist/fonts/roboto/', to: 'fonts/roboto' }]),
         /**
        * Plugin LoaderOptionsPlugin (experimental)
        *

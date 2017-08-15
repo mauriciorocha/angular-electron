@@ -7,3 +7,32 @@ div {
 td, th {
     padding: 10px 5px !important;
 }
+
+.div-floating-button{
+  position: relative; 
+  height: 70px;
+}
+
+.position-button-floating{
+  position: absolute; 
+  display: inline-block; 
+  bottom: 0px !important;
+  right: -40px;
+}
+
+.fixed-action-btn.horizontal ul{
+    right: 15px !important; 
+}
+
+.btn-floating i {
+    width: inherit !important;
+}
+
+.margin-right-10{
+  margin-right: 10px;
+}
+
+
+.padding-top-15{
+  margin-top: 15px;
+}
