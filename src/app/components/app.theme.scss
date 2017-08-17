@@ -35,6 +35,8 @@
 
 // @import '~materialize-css/sass/materialize';
 
+@import '../../node_modules/ng2-spinning-preloader/dist/ng-spinning-preloader.css';
+
 $fa-font-path: "dist/fonts/font-awesome";
 @import '../../../node_modules/font-awesome/scss/font-awesome';
 @import '../../../node_modules/materialize-css/sass/components/_color';
@@ -79,4 +81,25 @@ $roboto-font-path: "dist/fonts/roboto/";
 a {
   color: color($color-theme, 'lighten-3') !important;
   font-weight: bold;
+}
+
+
+.spinning-preloader-container>.spinning-preloader-elements:after{
+  border-top-color: #000 !important;
+}
+
+.spinning-preloader-container>.spinning-preloader-elements:before{
+  border-top-color: #696969 !important;
+}
+
+.spinning-preloader-container>.spinning-preloader-elements{
+  border-top-color: #da222b !important;
+}
+
+#sidenav-overlay{
+  z-index: 3000 !important;
+}
+
+.side-nav{
+  z-index: 3050 !important;
 }

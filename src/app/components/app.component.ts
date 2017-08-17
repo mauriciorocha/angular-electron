@@ -1,8 +1,9 @@
-import {AppState} from './../store/appState.store';
+import { AppState } from './../store/appState.store';
 /**
  * Import decorators and services from angular
  */
-import {Component, OnInit, AfterViewInit, ViewEncapsulation} from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewEncapsulation } from '@angular/core';
+import { NgSpinningPreloader } from 'ng2-spinning-preloader';
 
 /*
  * App Component
@@ -15,21 +16,26 @@ import {Component, OnInit, AfterViewInit, ViewEncapsulation} from '@angular/core
     encapsulation: ViewEncapsulation.None,
     templateUrl: './app.component.html'
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit, OnInit {
     //component initialization
     isDarkTheme: boolean = false;
     public profileService: any;
-    
-    constructor() {
+
+    constructor(private ngSpinningPreloader: NgSpinningPreloader) {
         this.profileService = {
             user: {}
         };
     }
-    
+
+    ngOnInit() {
+        this.ngSpinningPreloader.stop();
+    }
+
+
     ngAfterViewInit() {
         const mat = require('materialize-css')
-        
-        
+
+
 
         console.log('ready');
         (<any>$('.button-collapse')).sideNav();
@@ -40,10 +46,10 @@ export class AppComponent implements AfterViewInit {
         });
 
     }
-    
+
     checkAuthentication() {
     }
-    
+
     close() {
         const electron = require('electron');
         const app = electron.remote.app;

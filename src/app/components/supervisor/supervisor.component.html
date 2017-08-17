@@ -1,4 +1,4 @@
-<div class="col s12" style="margin-top: 10px;">
+<div class="col s12" style="margin-top: 10px;" *ngIf="infoServers" >
 
     <ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
         <li *ngFor="let host of infoServers">
@@ -36,24 +36,56 @@
                             <li class="collection-header red darken-3 white-text">
                                 <div class="row">
                                     <div class="col m6">
-                                        <h4>{{group[0].group}}</h4>
+                                        <h4>{{group.arrRetorno[0].group}}</h4>
                                     </div>
                                     <div class="col m6 right-align padding-top-15">
-                                        <a class="btn-floating waves-effect waves-light green margin-right-10" (click)="playGroup(host.host, group[0].group);">
+                                        <a class="btn-floating waves-effect waves-light green margin-right-10" 
+                                            (click)="playGroup(host.host, group.arrRetorno[0].group);"
+                                            *ngIf="!(group.pidAtivos >= group.pidInativos + group.pidAtivos)" >
                                             <i class="fa fa-play"></i>
                                         </a>
-                                        <a class="btn-floating waves-effect waves-light orange" (click)="stopGroup(host.host, group[0].group);">
+                                        <a class="btn-floating waves-effect waves-light orange" 
+                                            (click)="stopGroup(host.host, group.arrRetorno[0].group);"
+                                             *ngIf="!(group.pidInativos >= group.pidInativos + group.pidAtivos)">
                                             <i class="fa fa-stop"></i>
                                         </a>
                                     </div>
                                 </div>
                             </li>
-                            <li *ngFor="let item of group" class="collection-item">
+                            <li *ngFor="let item of group.arrRetorno; let i = index" class="collection-item">
+                                <!--<pre>{{ item | json}}</pre>-->
                                 <table class="bordered">
                                     <tbody>
                                         <tr>
                                             <td><b>Status</b></td>
-                                            <td><b>{{item.statename}}</b></td>
+                                            <td>
+                                                <div class="left ">
+                                                    <b>{{item.statename}}</b>
+                                                </div>
+                                                <div class="right">
+                                                    <div class="left">
+                                                        <!--<a id="welcome_{{i}}" class="btn-floating btn-small waves-effect waves-light yellow margin-right-10" 
+                                                            (click)="showSidenav(); $event.stopPropagation()" materialize="sideNav" 
+                                                            [materializeActions]="sidenavActions" [materializeParams]="[sidenavParams]" data-activates="log">
+                                                            <i class="fa fa-search"></i>
+                                                        </a>-->
+                                                        
+                                                    
+                                                    </div>
+                                                    <div class="right">
+                                                        <a class="btn-floating btn-small waves-effect waves-light green margin-right-10" 
+                                                            (click)="playWork(host.host, group.arrRetorno[0].group, item.name);"
+                                                            *ngIf="item.statename !== 'RUNNING'" >
+                                                            <i class="fa fa-play"></i>
+                                                        </a>
+                                                        <a class="btn-floating btn-small waves-effect waves-light orange" 
+                                                            (click)="stopWork(host.host, group.arrRetorno[0].group, item.name);"
+                                                            *ngIf="item.statename === 'RUNNING'">
+                                                            <i class="fa fa-stop"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Name</td>
@@ -101,3 +133,10 @@
     </ul>
     <br/><br/>
 </div>
+
+<!--<div id="log" class="side-nav">sdfdsf</div>
+
+
+<a materialize="sideNav" (click)="showSidenav();" [materializeParams]="[sidenavParams]" [materializeActions]="sidenavActions" class="btn-floating btn-flat green">
+    <i class="material-icons">menu</i>
+</a>-->
