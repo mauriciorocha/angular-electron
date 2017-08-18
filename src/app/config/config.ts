@@ -22,5 +22,18 @@ export var config:any =
             "user": "maxvex_dev",
             "password": "123"
         }]
-    }
+    },
+    ambientes: {
+        'local': 'http://localhost/api/',
+        'dev': 'https://dev-maxvex.brscan.com.br/api/',
+        'hml': 'https://hml-maxvex.brscan.com.br/api/',
+        'prod': 'https://maxvex.brscan.com.br/api/'
+    },
+    arrAmbientes: [
+        'http://localhost/api/',
+        'https://dev-maxvex.brscan.com.br/api/',
+        'https://hml-maxvex.brscan.com.br/api/',
+        'https://maxvex.brscan.com.br/api/'
+    ]
+    
 };

@@ -1,1 +1,54 @@
-<div id="test2" class="col s12">Job Component</div>
+<div class="col s12" style="margin-top: 10px;">
+    <div class="row">
+        <div class="input-field col m6">
+            <select materialize="material_select" #servidorX [materializeSelectOptions]="arrServidores" class="validate" name="servidor" 
+            [(ngModel)]="servidor" (change)="getAllJobs()">
+            <option *ngFor="let option of arrServidores" [value]="option">{{option}}</option>
+          </select>
+
+        </div>
+        <div class="col m6 right-align">
+            <a class="waves-effect waves-light btn white-text" (click)="getAllJobs()">Atualizar <i class="fa fa-refresh" aria-hidden="true"></i></a>
+        </div>
+
+    </div>
+    <div *ngIf="arrJobs.length <= 0" class="card-panel brown lighten-5 red-text">
+        Nenhum JOB para processar!
+    </div>
+    <div class="card" *ngFor="let job of arrJobs">
+        <div class="card-content">
+            <div class="row margin-bottom-1">
+                <div class="col m6">
+                    <h5>Queue: {{job.queue | uppercase}}</h5>
+                </div>
+                <div class="col m6 right-align">
+                    <h5>Tentativas: {{ job.attempts }}</h5>
+                </div>
+            </div>
+            <div class="divider margin-bottom-15"></div>
+            <div class="row">
+                <div class="col m4">
+                    Oportunidade: {{job.oportunidade.num_oportunidade}}
+                </div>
+                <div class="col m4">
+                    Status: {{job.oportunidade.status.des_status_oportunidade | ucwords}}
+                </div>
+                <div class="col m4">
+                    Cod. Oportunidade: {{job.frk_oportunidade}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col m4">
+                    Job: {{job.id}}
+                </div>
+                <div class="col m4">
+                    Disponível em: {{transformTimestampToDate(job.available_at)}}
+                </div>
+                <div class="col m4">
+                    Criado em: {{job.created_at | date:"dd/MM/yyyy HH:mm" }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
 import { NgSpinningPreloader } from 'ng2-spinning-preloader';
 import * as moment from 'moment/moment';
 
@@ -35,7 +36,7 @@ export class AppService {
                         if(response.status_code == 401){
                         }
                         
-                        return Observable.throw(response);
+                        return Observable.throw(response || 'Ocorreu um problema ao realizar essa operação.'); 
                   });
       }
 

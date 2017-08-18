@@ -43,6 +43,8 @@ import {MaterializeModule} from "angular2-materialize";
 
 import { AppService } from './components/app.service';
 import { SupervisorService } from './components/supervisor/supervisor.service';
+import { JobsService } from './components/jobs/jobs.service';
+
 
 
 import { GroupByPipe } from 'ngx-pipes/src/app/pipes/array/group-by';
@@ -58,12 +60,12 @@ import { GroupByPipe } from 'ngx-pipes/src/app/pipes/array/group-by';
         ReactiveFormsModule,
         HttpModule,
         BrowserAnimationsModule,
-        MaterializeModule,
+        MaterializeModule.forRoot(),
         RouterModule.forRoot(routes, {useHash: true}),
         StoreModule.provideStore({authStore}, {authStore: authInitialState}),
         NgPipesModule
     ],
-    providers: [NgSpinningPreloader, GroupByPipe, Authentication, AppService, SupervisorService],
+    providers: [NgSpinningPreloader, GroupByPipe, Authentication, AppService, SupervisorService, JobsService],
     declarations: [TabsComponent, SupervisorComponent, JobsComponent, RelatoriosComponent, AppComponent, HomeComponent, LoginComponent],
     bootstrap: [AppComponent]
 })

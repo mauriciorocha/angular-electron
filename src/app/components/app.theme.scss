@@ -103,3 +103,49 @@ a {
 .side-nav{
   z-index: 3050 !important;
 }
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+@for $i from 1 through 30 {
+  .padding-#{$i}{
+    padding: #{$i}px;
+  }
+}
+
+@for $i from 1 through 30 {
+  .padding-top-#{$i}{
+    padding-top: #{$i}px;
+  }
+}
+
+@for $i from 1 through 30 {
+  .padding-bottom-#{$i}{
+    padding-bottom: #{$i}px;
+  }
+}
+
+@for $i from 1 through 30 {
+  .margin-#{$i}{
+    margin: #{$i}px;
+  }
+}
+
+@for $i from 1 through 30 {
+  .margin-top-#{$i}{
+    margin-top: #{$i}px;
+  }
+}
+
+@for $i from 1 through 30 {
+  .margin-bottom-#{$i}{
+    margin-bottom: #{$i}px;
+  }
+}
+
+@for $i from 1 through 50 {
+  .fontsize-#{$i}{
+    font-size: #{$i}px !important;
+  }
+}
