@@ -34,10 +34,10 @@ var config = {
         chunkFilename: '[id].chunk.js'
     },
     /*
-    * Options affecting the resolving of modules.
-    *
-    * See: http://webpack.github.io/docs/configuration.html#resolve
-    */
+     * Options affecting the resolving of modules.
+     *
+     * See: http://webpack.github.io/docs/configuration.html#resolve
+     */
     resolve: {
         /*
          * An array of extensions that should be used to resolve modules.
@@ -51,10 +51,10 @@ var config = {
 
     },
     /*
-    * Options affecting the resolving of modules.
-    *
-    * See: http://webpack.github.io/docs/configuration.html#resolve
-    */
+     * Options affecting the resolving of modules.
+     *
+     * See: http://webpack.github.io/docs/configuration.html#resolve
+     */
     module: {
         rules: [
             // Support for .ts files.
@@ -84,8 +84,8 @@ var config = {
 
             // support for fonts
             {
-                test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
-                loader: 'file-loader?name=dist/fonts/[name]-[hash].[ext]'
+                test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+                loader: 'file-loader?name=dist/fonts/[name].[ext]'
             },
 
             // support for svg icons
@@ -111,13 +111,15 @@ var config = {
         //
         // See: https://www.npmjs.com/package/copy-webpack-plugin
         new CopyWebpackPlugin([{ from: 'src/assets', to: 'assets' }]),
+        // new CopyWebpackPlugin([{ from: 'src/fonts', to: 'fonts' }]),
+        new CopyWebpackPlugin([{ from: 'node_modules/ng2-spinning-preloader/dist/ng-spinning-preloader.css', to: 'ng-spinning-preloader.css' }]),
         new CopyWebpackPlugin([{ from: 'node_modules/font-awesome/fonts', to: 'fonts/font-awesome' }]),
         new CopyWebpackPlugin([{ from: 'node_modules/materialize-css/dist/fonts/roboto/', to: 'fonts/roboto' }]),
         /**
-       * Plugin LoaderOptionsPlugin (experimental)
-       *
-       * See: https://gist.github.com/sokra/27b24881210b56bbaff7
-       */
+         * Plugin LoaderOptionsPlugin (experimental)
+         *
+         * See: https://gist.github.com/sokra/27b24881210b56bbaff7
+         */
         new LoaderOptionsPlugin({
             debug: true,
             options: {

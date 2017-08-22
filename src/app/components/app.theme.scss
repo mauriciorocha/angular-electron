@@ -1,103 +1,59 @@
-// @import '~@angular/material/theming';
-// NOTE: Theming is currently experimental and not yet publically released!
-// @include mat-core();
-//Here the existing theme is being redfined
-// $primary: mat-palette($mat-deep-purple);
-// $accent : mat-palette($mat-amber, A200, A100, A400);
-// $theme: mat-light-theme($primary, $accent);
-// @include angular-material-theme($theme);
-// This is where you define your custom them
-// mat-palette takes, color, default, lighter and darker params
-// .m2app-dark {
-//     $dark-primary: mat-palette($mat-cyan, 700, 500, 900);
-//     $dark-accent: mat-palette($mat-yellow, A200, A100, A400);
-//     $dark-warn: mat-palette($mat-amber, A200, A100, A400);
-//     $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
-//     @include angular-material-theme($dark-theme);
-// }
-// @import '~@angular/material/theming';
-// @include mat-core();
-// $primary: mat-palette($mat-grey, 800);
-// $accent: mat-palette($mat-light-blue, 600, 100, 800);
-// $warn: mat-palette($mat-red, 600);
-// $theme: mat-dark-theme($primary, $accent, $warn);
-// @include angular-material-theme($theme);
-// .container {
-//     min-height: 100%;
-// }
-
-/* You can add global styles to this file, and also import other style files */
-// $roboto-font-path: "~materialize-css/dist/fonts/roboto";
-// @import '~materialize-css/sass/components/color';
-
-// $primary-color: color("blue-grey", "lighten-2");
-// $secondary-color: color("purple", "darken-4") !default;
-
-// @import '~materialize-css/sass/materialize';
-
-@import '../../node_modules/ng2-spinning-preloader/dist/ng-spinning-preloader.css';
-
+//@import '../../node_modules/ng2-spinning-preloader/dist/ng-spinning-preloader.css';
+@import 'dist/ng-spinning-preloader.css';
+$roboto-font-path: "dist/fonts/roboto/";
 $fa-font-path: "dist/fonts/font-awesome";
 @import '../../../node_modules/font-awesome/scss/font-awesome';
 @import '../../../node_modules/materialize-css/sass/components/_color';
 $color-theme: 'red';
 $font-color: 'white';
-
 $primary-color: color($color-theme, "darken-3") !default;
 $primary-color-light: darken($primary-color, 25%) !default;
 $primary-color-dark: darken($primary-color, 45%) !default;
 $secondary-color: color($color-theme, "darken-1") !default;
 $highlight-color: color($color-theme, "lighten-5") !default;
-
 $font-color: color($font-color, "normal");
 $link-color: color($font-color, "normal") !default;
-
 $footer-font-color: $font-color !default;
 $footer-copyright-font-color: $font-color !default;
-
 $navbar-font-color: $font-color !default;
-
 $sidenav-font-size: 14px !default;
 $sidenav-font-color: $font-color !default;
 $sidenav-bg-color: $primary-color !default;
 $sidenav-padding: 16px !default;
 $sidenav-item-height: 48px !default;
 $sidenav-line-height: $sidenav-item-height !default;
-
 app-container {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 main {
-  flex: 1 0 auto;
-  padding-top: 15px;
+    flex: 1 0 auto;
+    padding-top: 15px;
 }
 
 $roboto-font-path: "dist/fonts/roboto/";
 @import '../../../node_modules/materialize-css/sass/materialize';
-
 a {
-  color: color($color-theme, 'lighten-3') !important;
-  font-weight: bold;
+    color: color($color-theme, 'lighten-3') !important;
+    font-weight: bold;
 }
 
-
-.spinning-preloader-container>.spinning-preloader-elements:after{
-  border-top-color: #000 !important;
+.spinning-preloader-container>.spinning-preloader-elements:after {
+    border-top-color: #000 !important;
 }
 
-.spinning-preloader-container>.spinning-preloader-elements:before{
-  border-top-color: #696969 !important;
+.spinning-preloader-container>.spinning-preloader-elements:before {
+    border-top-color: #696969 !important;
 }
 
-.spinning-preloader-container>.spinning-preloader-elements{
-  border-top-color: #da222b !important;
+.spinning-preloader-container>.spinning-preloader-elements {
+    border-top-color: #da222b !important;
 }
 
-#sidenav-overlay{
-  z-index: 3000 !important;
+#sidenav-overlay {
+    z-index: 3000 !important;
 }
 
 .side-nav{
